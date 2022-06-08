@@ -27,6 +27,9 @@ def df_to_array(news_df):
     words=[]
     y_mat=[]
     for index in range(len(news_df)):
+        if isinstance(news_df["content"][index], float):
+            print(news_df["content"][index])
+            continue
         content_list = news_df["content"][index].split("|")
         words.append(" ".join(content_list))
         y_mat.append(news_df["label"][index])
