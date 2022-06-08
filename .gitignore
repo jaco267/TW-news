@@ -1,0 +1,4 @@
+.env
+.env.development
+0_copy_db.py
+files/
