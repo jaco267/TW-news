@@ -19,3 +19,23 @@ def cat(x):
     return label_mapping[x]
 num = map(cat,category)
 print(list(num))
+
+
+
+
+import utils.mongo_function as mongo_f
+import pymongo
+from pymongo import MongoClient
+from dotenv import dotenv_values
+config = dotenv_values(".env")
+
+
+my_cluster = MongoClient(config["local_DB"])
+my_db  = my_cluster["TW_news"]
+my_collection  = my_db["TW_news_100"]
+
+agg_list=mongo_f.agg_category(my_collection)
+for cat in agg_list:
+    print(cat["_id"],cat["count"])
+
+mongo_f.agg_media(my_collection)

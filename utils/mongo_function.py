@@ -1,3 +1,5 @@
+from bson.objectid import ObjectId
+
 def count_num(collection):
     agg_results=collection.aggregate([
       {"$group": {  "_id": "",   "comment_num":{"$sum":1}  }},  
@@ -12,6 +14,9 @@ def agg_media(my_collection):
     ])
     for agg in agg_results:
         print("count_num: ",agg)
+    
+    # for agg in agg_results:
+    #     print(agg['_id'],end=" ")
 
 def agg_category(my_collection):
     agg_results=my_collection.aggregate([
